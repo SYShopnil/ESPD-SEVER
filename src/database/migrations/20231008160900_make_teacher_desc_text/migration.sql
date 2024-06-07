@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "teachers" ALTER COLUMN "bio" SET DATA TYPE TEXT,
+ALTER COLUMN "description" SET DATA TYPE TEXT;

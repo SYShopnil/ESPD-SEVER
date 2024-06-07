@@ -1,0 +1,512 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id            Int     @id @default(autoincrement())
+  email         String  @unique
+  password      String
+  phone         String?
+  first_name    String?
+  last_name     String?
+  push_token    String?
+  profile_photo String? @db.VarChar(200)
+  timezone      String? @db.VarChar(20)
+
+  @@map(name: "admin_users")
+}
+
+model AdminPasswordReset {
+  id          Int     @id @default(autoincrement())
+  email       String  @unique @db.VarChar(200)
+  reset_code  String  @db.VarChar(200)
+  reset_token String? @db.VarChar(200)
+
+  @@map(name: "admin_password_resets")
+}
+
+model User {
+  id                    Int          @id @default(autoincrement())
+  email                 String?      @unique
+  phone                 String?      @unique
+  first_name            String?
+  last_name             String?
+  push_token            String?
+  password              String?
+  social_id             String?
+  social_login_provider String?
+  profile_photo         String?      @db.VarChar(200)
+  Attachment            Attachment[]
+
+  @@map(name: "users")
+}
+
+model Attachment {
+  id       Int      @id @default(autoincrement())
+  url      String
+  desc     String?
+  lat      String?
+  lon      String?
+  datetime DateTime @default(now())
+  user_id  Int?
+  user     User?    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@map(name: "attachments")
+}
+
+model Teacher {
+  id                   Int     @id @default(autoincrement())
+  first_name           String  @db.VarChar(200)
+  last_name            String  @db.VarChar(200)
+  profile_photo        String? @db.VarChar(200)
+  email                String  @unique @db.VarChar(200)
+  work_email           String? @unique @db.VarChar(200)
+  phone                String  @unique @db.VarChar(200)
+  password             String  @db.VarChar(200)
+  experience           Int?
+  is_dbs_checked       Boolean @default(false)
+  is_super_tutor       Boolean @default(false)
+  bio                  String?
+  description          String?
+  price_one_to_one     Int?
+  price_group          Int?
+  address_line_1       String? @db.VarChar(200)
+  address_line_2       String? @db.VarChar(200)
+  city                 String? @db.VarChar(200)
+  postal_code          String? @db.VarChar(200)
+  country              String? @db.VarChar(200)
+  free_video_call      Boolean @default(true)
+  lesson_one_to_one    Boolean @default(false)
+  lesson_group         Boolean @default(false)
+  short_desc           String?
+  tution_hours         Int?
+  repeated_student     Int?
+  google_access_token  String? @db.VarChar(300)
+  google_refresh_token String? @db.VarChar(300)
+
+  Review             Review[]
+  WeeklyHours        WeeklyHours[]
+  Favorite           Favorite[]
+  ExamBoardOnTeacher ExamBoardOnTeacher[]
+  Qualification      Qualification[]
+  SubjectOffered     SubjectOffered[]
+  Booking            Booking[]
+  Messages           Message[]
+  TeacherCalender    TeacherCalender[]
+
+  @@map(name: "teachers")
+}
+
+model Qualification {
+  id         Int     @id @default(autoincrement())
+  teacher_id Int
+  subject    String  @db.VarChar(200)
+  degree     String  @db.VarChar(200)
+  Teacher    Teacher @relation(fields: [teacher_id], references: [id], onDelete: Cascade)
+
+  @@map(name: "qualifications")
+}
+
+model FindTutor {
+  id          Int     @id @default(autoincrement())
+  subject_id  Int
+  level_id    Int
+  name        String  @db.VarChar(200)
+  email       String  @db.VarChar(200)
+  phone       String  @db.VarChar(200)
+  description String? @db.VarChar(200)
+  subject     Subject @relation(fields: [subject_id], references: [id], onDelete: Cascade)
+  level       Level   @relation(fields: [level_id], references: [id], onDelete: Cascade)
+
+  @@map(name: "find_tutors")
+}
+
+model Newsletter {
+  id    Int    @id @default(autoincrement())
+  email String @db.VarChar(200)
+
+  @@map(name: "newsletters")
+}
+
+model OtpVerification {
+  id    Int     @id @default(autoincrement())
+  otp   Int
+  email String  @unique @db.VarChar(200)
+  phone String? @db.VarChar(200)
+
+  @@map(name: "otp_verifications")
+}
+
+model Testimonial {
+  id           Int     @id @default(autoincrement())
+  desc         String?
+  student_name String  @db.VarChar(200)
+  subject      String  @db.VarChar(200)
+  school       String  @db.VarChar(200)
+  image        String? @db.VarChar(200)
+  is_student   Boolean @default(true)
+  sort_order   Int?    @default(1)
+
+  @@map(name: "testimonials")
+}
+
+model WeeklyHours {
+  id         Int       @id @default(autoincrement())
+  teacher_id Int
+  day        WeekDays?
+  slot       Slots?
+  teacher    Teacher   @relation(fields: [teacher_id], references: [id], onDelete: Cascade)
+
+  @@map(name: "weekly_hours")
+}
+
+enum WeekDays {
+  Monday
+  Tuesday
+  Wednesday
+  Thursday
+  Friday
+  Saturday
+  Sunday
+}
+
+enum Slots {
+  MORNING
+  AFTERNOON
+  EVENING
+}
+
+model Faq {
+  id         Int     @id @default(autoincrement())
+  question   String  @db.VarChar(200)
+  answer     String
+  sort_order Int     @default(1)
+  type       String?
+
+  @@map(name: "faqs")
+}
+
+model BillingAddress {
+  id             Int     @id @default(autoincrement())
+  student_id     Int
+  address_line_1 String? @db.VarChar(200)
+  address_line_2 String? @db.VarChar(200)
+  city           String? @db.VarChar(200)
+  postal_cdoe    String? @db.VarChar(200)
+  country        String? @db.VarChar(200)
+
+  @@map(name: "billing_addresses")
+}
+
+model Student {
+  id             Int             @id @default(autoincrement())
+  first_name     String          @db.VarChar(200)
+  last_name      String          @db.VarChar(200)
+  email          String          @unique @db.VarChar(200)
+  phone          String?         @db.VarChar(200)
+  password       String?         @db.VarChar(200)
+  profile_photo  String?         @db.VarChar(200)
+  address_line_1 String?         @db.VarChar(200)
+  address_line_2 String?         @db.VarChar(200)
+  city           String?         @db.VarChar(200)
+  postal_cdoe    String?         @db.VarChar(200)
+  country        String?         @db.VarChar(200)
+  is_verified    Boolean         @default(false)
+  login_type     login_types?    @default(email)
+  Review         Review[]
+  Favorite       Favorite[]
+  Booking        Booking[]
+  BookingMember  BookingMember[]
+
+  @@map(name: "students")
+}
+
+enum login_types {
+  email
+  facebook
+  google
+  apple
+}
+
+model Review {
+  id            Int      @id @default(autoincrement())
+  teacher_id    Int
+  student_id    Int?
+  student_name  String?
+  student_image String?
+  date          DateTime @default(now())
+  rating        Int
+  desc          String?
+  teacher       Teacher  @relation(fields: [teacher_id], references: [id], onDelete: Cascade)
+  student       Student? @relation(fields: [student_id], references: [id], onDelete: Cascade)
+
+  @@map(name: "reviews")
+}
+
+model Favorite {
+  id         Int      @id @default(autoincrement())
+  teacher_id Int
+  student_id Int
+  date       DateTime @default(now())
+  teacher    Teacher  @relation(fields: [teacher_id], references: [id], onDelete: Cascade)
+  student    Student  @relation(fields: [student_id], references: [id], onDelete: Cascade)
+
+  @@map(name: "favorites")
+}
+
+model ExamBoardOnTeacher {
+  id            Int       @id @default(autoincrement())
+  teacher_id    Int
+  exam_board_id Int
+  Teacher       Teacher   @relation(fields: [teacher_id], references: [id], onDelete: Cascade)
+  ExamBoard     ExamBoard @relation(fields: [exam_board_id], references: [id], onDelete: Cascade)
+
+  @@map(name: "exam_board_on_teachers")
+}
+
+model ExamBoard {
+  id                 Int                  @id @default(autoincrement())
+  name               String               @db.VarChar(200)
+  logo               String
+  sort_order         Int                  @default(1)
+  ExamBoardOnTeacher ExamBoardOnTeacher[]
+  Booking            Booking[]
+  SubjectOffered     SubjectOffered[]
+  Message            Message[]
+
+  @@map(name: "exam_boards")
+}
+
+model BookedStudent {
+  id                 Int @id @default(autoincrement())
+  booking_id         Int
+  grouped_student_id Int
+
+  @@map(name: "booked_students")
+}
+
+model Booking {
+  id                Int             @id @default(autoincrement())
+  teacher_id        Int
+  student_id        Int
+  subject_id        Int?
+  parent_booking_id Int? //for group bookings
+  level_id          Int?
+  exam_board_id     Int?
+  booking_type      BookingTypes    @default(One_To_One)
+  no_of_member      Int             @default(1)
+  date              DateTime?       @default(now())
+  start_time        DateTime?
+  end_time          DateTime?
+  duration          Int             @default(1)
+  suuport_message   String?         @db.VarChar(500)
+  payment_status    PaymentStatus   @default(UNPAID)
+  amount            Int?
+  teacher_amount    Int?
+  BookingMember     BookingMember[]
+  token             String?
+  meet_link         String?
+  status            BookingStatus   @default(PAYMENT_PENDING)
+  Teacher           Teacher         @relation(fields: [teacher_id], references: [id], onDelete: Cascade)
+  Student           Student         @relation(fields: [student_id], references: [id], onDelete: Cascade)
+  Subject           Subject?        @relation(fields: [subject_id], references: [id], onDelete: Cascade)
+  Level             Level?          @relation(fields: [level_id], references: [id], onDelete: Cascade)
+  ExamBoard         ExamBoard?      @relation(fields: [exam_board_id], references: [id], onDelete: SetNull)
+
+  @@map(name: "bookings")
+}
+
+enum BookingTypes {
+  One_To_One
+  One_To_Group
+}
+
+enum BookingStatus {
+  PAYMENT_PENDING
+  CANCEL
+  COMPLETE
+  UPCOMING
+}
+
+enum PaymentStatus {
+  PAID
+  UNPAID
+}
+
+model TeacherOnSubject {
+  id         Int @id @default(autoincrement())
+  teacher_id Int
+  subject_id Int
+
+  @@map(name: "teacher_on_subjects")
+}
+
+model Subject {
+  id             Int              @id @default(autoincrement())
+  name           String           @unique @db.VarChar(200)
+  is_popular     Boolean          @default(false)
+  FindTutor      FindTutor[]
+  SubjectOffered SubjectOffered[]
+  Booking        Booking[]
+  Message        Message[]
+  SubjectOnLevel SubjectOnLevel[]
+
+  @@map(name: "subjects")
+}
+
+model Level {
+  id             Int              @id @default(autoincrement())
+  name           String           @unique
+  FindTutor      FindTutor[]
+  SubjectOffered SubjectOffered[]
+  Booking        Booking[]
+  LevelCost      LevelCost[]
+  Message        Message[]
+  SubjectOnLevel SubjectOnLevel[]
+}
+
+model SubjectOffered {
+  id            Int        @id @default(autoincrement())
+  teacher_id    Int
+  subject_id    Int
+  level_id      Int
+  exam_board_id Int?
+  Teacher       Teacher    @relation(fields: [teacher_id], references: [id], onDelete: Cascade)
+  Examboard     ExamBoard? @relation(fields: [exam_board_id], references: [id], onDelete: Cascade)
+  Subject       Subject    @relation(fields: [subject_id], references: [id], onDelete: Cascade)
+  Level         Level      @relation(fields: [level_id], references: [id], onDelete: Cascade)
+
+  @@map(name: "subject_offereds")
+}
+
+model TeacherOnboardRequest {
+  id              Int     @id @default(autoincrement())
+  qts_confered    Boolean @default(false)
+  has_dbs_checked Boolean @default(false)
+  email           String
+  phone           String
+  linkedin_url    String?
+  experience      String?
+  token           String
+  work_email      String?
+  is_accepted     Boolean @default(false)
+}
+
+model Message {
+  id              Int        @id @default(autoincrement())
+  teacher_id      Int
+  date            DateTime   @default(now())
+  message         String
+  contact_email   String
+  subject_id      Int?
+  level_id        Int?
+  exam_board_id   Int?
+  free_video_chat Boolean    @default(false)
+  Teacher         Teacher    @relation(fields: [teacher_id], references: [id], onDelete: Cascade)
+  Level           Level?     @relation(fields: [level_id], references: [id], onDelete: Cascade)
+  Subject         Subject?   @relation(fields: [subject_id], references: [id], onDelete: Cascade)
+  ExamBoard       ExamBoard? @relation(fields: [exam_board_id], references: [id], onDelete: Cascade)
+
+  @@map(name: "messages")
+}
+
+model TeacherCalender {
+  id         Int      @id @default(autoincrement())
+  day        WeekDays
+  start_time String   @db.VarChar(20)
+  end_time   String   @db.VarChar(20)
+  teacher_id Int
+  Teacher    Teacher  @relation(fields: [teacher_id], references: [id], onDelete: Cascade)
+
+  @@map(name: "teacher_calender")
+}
+
+model BookingMember {
+  id         Int     @id @default(autoincrement())
+  student_id Int
+  booking_id Int
+  Booking    Booking @relation(fields: [booking_id], references: [id], onDelete: Cascade)
+  Student    Student @relation(fields: [student_id], references: [id], onDelete: Cascade)
+
+  @@map(name: "booking_members")
+}
+
+model LevelCost {
+  id               Int @id @default(autoincrement())
+  no_of_member     Int
+  cost_per_student Int
+  level_id         Int
+  tutors_cut       Int
+
+  Level Level @relation(fields: [level_id], onDelete: Cascade, references: [id])
+
+  @@map(name: "level_costs")
+}
+
+model Setting {
+  id    Int    @id @default(autoincrement())
+  key   String @unique
+  value String
+
+  @@map(name: "settings")
+}
+
+model Feature {
+  id          Int               @id @default(autoincrement())
+  title       String
+  description String?
+  image       String?
+  location    FeaturesLocation? @default(home)
+
+  @@map(name: "features")
+}
+
+enum FeaturesLocation {
+  home
+  work_at_espd
+  work_at_espd_body
+}
+
+model SubjectOnLevel {
+  id         Int     @id @default(autoincrement())
+  level_id   Int
+  subject_id Int
+  Level      Level   @relation(fields: [level_id], onDelete: Cascade, references: [id])
+  Subject    Subject @relation(fields: [subject_id], onDelete: Cascade, references: [id])
+
+  @@map(name: "subject_on_level")
+}
+
+model Blog {
+  id           Int      @id @default(autoincrement())
+  author_name  String
+  title        String
+  content      String
+  category     String?
+  image        String?
+  author_image String?
+  short_desc   String
+  date         DateTime @default(now())
+
+  @@map(name: "blogs")
+}
+
+model ResetPassword {
+  id          Int     @id @default(autoincrement())
+  email       String  @unique
+  token       String
+  otp         String  @db.VarChar(10)
+  role        String
+  is_verified Boolean @default(false)
+
+  @@map(name: "reset_password")
+}

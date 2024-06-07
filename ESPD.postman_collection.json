@@ -1,0 +1,2111 @@
+{
+	"info": {
+		"_postman_id": "6b4bba40-78e7-411f-8bce-a2bdb6400ef7",
+		"name": "ESPD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "594866"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register/login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\": \"{{$randomPhoneNumber}}\",\r\n    \"idToken\": \"123\"\r\n}"
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/login",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "config",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/v1/config",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"config"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "home",
+			"item": [
+				{
+					"name": "home",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/v1/home",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"home"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}"
+									}
+								],
+								"url": {
+									"raw": "{{HOST}}/api/v1/home",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"home"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2545"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9f1-XkPXsAqdm7iFvsdrh52JTM/1Y/g\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 06 Sep 2023 13:37:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"levels\": [\n            {\n                \"id\": 1,\n                \"name\": \"GCSE\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"A-Level\"\n            },\n            {\n                \"id\": 3,\n                \"name\": \"AS-Level\"\n            }\n        ],\n        \"subjects\": [\n            {\n                \"id\": 1,\n                \"name\": \"Chemistry\",\n                \"is_popular\": true\n            },\n            {\n                \"id\": 2,\n                \"name\": \"Physics\",\n                \"is_popular\": true\n            },\n            {\n                \"id\": 3,\n                \"name\": \"Biology\",\n                \"is_popular\": false\n            },\n            {\n                \"id\": 4,\n                \"name\": \"Mathematics\",\n                \"is_popular\": false\n            },\n            {\n                \"id\": 5,\n                \"name\": \"History\",\n                \"is_popular\": false\n            },\n            {\n                \"id\": 6,\n                \"name\": \"English Literature\",\n                \"is_popular\": false\n            },\n            {\n                \"id\": 7,\n                \"name\": \"Computer Science\",\n                \"is_popular\": true\n            },\n            {\n                \"id\": 8,\n                \"name\": \"Art History\",\n                \"is_popular\": true\n            },\n            {\n                \"id\": 9,\n                \"name\": \"Psychology\",\n                \"is_popular\": true\n            },\n            {\n                \"id\": 10,\n                \"name\": \"Sociology\",\n                \"is_popular\": true\n            }\n        ],\n        \"testimonials\": [\n            {\n                \"id\": 1,\n                \"desc\": \"From covering new content to prepping for exams, my teacher was great at providing a variety of resources to fill the gaps in our knowledge. Above all, he is a committed teacher who strives to instil his students with enthusiasm and ambition, qualities which remain important beyond your time in education.\",\n                \"student_name\": \"Suraiya\",\n                \"subject\": \"Geography\",\n                \"school\": \"University College London\",\n                \"image\": \"\",\n                \"is_student\": true,\n                \"sort_order\": 1\n            },\n            {\n                \"id\": 2,\n                \"desc\": \"As a student passionate about literature, my teacher not only helped me understand complex literary concepts but also inspired me to explore the world of books further. Their dedication to teaching is truly commendable.\",\n                \"student_name\": \"Liam\",\n                \"subject\": \"Literature\",\n                \"school\": \"Oxford University\",\n                \"image\": \"liam.jpg\",\n                \"is_student\": true,\n                \"sort_order\": 2\n            }\n        ],\n        \"faqs\": [\n            {\n                \"id\": 1,\n                \"question\": \"What is exam success and how does ESPD promote it?\",\n                \"answer\": \"We guarantee exam success through guaranteeing students access to quality first tutors who are fully qualified teachers from universities and teaching practices in the UK and have at least three years’ experience teaching and raising achievement in their subject(s) as well as current and clear DBS checks. We ensure that every tutorial involves our tutors understanding exactly what students require support with, sensitively and effectively closing the gap in curriculum knowledge and exam skill and then ensuring that the student is empowered to answer an exam question by the end of each tutorial.\",\n                \"sort_order\": 1\n            },\n            {\n                \"id\": 2,\n                \"question\": \"How does ESPD select its tutors?\",\n                \"answer\": \"ESPD selects tutors who are fully qualified teachers from universities and teaching practices in the UK. Our tutors have at least three years' experience teaching and improving student achievement in their subject areas. Additionally, they undergo current and clear DBS checks to ensure the safety and security of our students.\",\n                \"sort_order\": 2\n            }\n        ]\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "teacher request",
+			"item": [
+				{
+					"name": "teacher request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"experience\": \"{{$randomLoremText}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"phone\": \"{{$randomPhoneNumber}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/teacherrequest",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teacherrequest"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reset password",
+			"item": [
+				{
+					"name": "reuqest otp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"vilofos233@ibtrades.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/reset-password/request-otp",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reset-password",
+								"request-otp"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "Student Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"{{$randomFirstName}}\",\r\n    \"last_name\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"phone\": \"{{$randomPhoneNumber}}\",\r\n    \"password\": \"mehedihasan\",\r\n    \"profile_photo\": \"{{$randomFilePath}}\",\r\n    \"address_line_1\": \"{{$randomStreetAddress}}\",\r\n    \"address_line_2\": \"{{$randomStreetAddress}}\",\r\n    \"city\": \"{{$randomWords}}\",\r\n    \"postal_cdoe\": \"{{$randomWords}}\",\r\n    \"country\": \"{{$randomWords}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/auth/student/register",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"student",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/v1/student/16",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"Sarina_Conroy@hotmail.com\",\r\n  \"address_line_1\": \"Shantibagh , Ward no - 4\",\r\n  \"address_line_2\": \"H - 4262\",\r\n  \"city\": \"Bangladesh\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/student/update/info/70",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"update",
+								"info",
+								"70"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Password Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"new_password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/student/update/password/9",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"update",
+								"password",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Favourite Teacher",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"student_id\": 10,\r\n    \"teacher_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/favourite",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"favourite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Favourite Teachers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/favourite/10",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"favourite",
+								"10"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Favourite Teachers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOST}}/api/v1/favourite/10",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"favourite",
+										"10"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1113"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"459-/BXWzJK8FATcJucz1SVA9A2HPsQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Sep 2023 13:00:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"first_name\": \"Mireille\",\n            \"last_name\": \"O'Hara\",\n            \"exam_board_logo\": [],\n            \"bio\": \"Regional\",\n            \"hourly_rate\": 810,\n            \"review\": [],\n            \"description\": null,\n            \"is_super_tutor\": true\n        },\n        {\n            \"first_name\": \"Kiley\",\n            \"last_name\": \"Harris\",\n            \"exam_board_logo\": [],\n            \"bio\": \"International\",\n            \"hourly_rate\": 276,\n            \"review\": [],\n            \"description\": null,\n            \"is_super_tutor\": true\n        },\n        {\n            \"first_name\": \"Dolores\",\n            \"last_name\": \"Hyatt\",\n            \"exam_board_logo\": [],\n            \"bio\": \"Internal\",\n            \"hourly_rate\": 647,\n            \"review\": [\n                {\n                    \"rating\": 3\n                },\n                {\n                    \"rating\": 3\n                },\n                {\n                    \"rating\": 3\n                }\n            ],\n            \"description\": null,\n            \"is_super_tutor\": true\n        },\n        {\n            \"first_name\": \"Joel\",\n            \"last_name\": \"White\",\n            \"exam_board_logo\": [],\n            \"bio\": \"Human\",\n            \"hourly_rate\": 50,\n            \"review\": [],\n            \"description\": null,\n            \"is_super_tutor\": true\n        },\n        {\n            \"first_name\": \"Audra\",\n            \"last_name\": \"Ankunding\",\n            \"exam_board_logo\": [],\n            \"bio\": \"Human\",\n            \"hourly_rate\": 111,\n            \"review\": [\n                {\n                    \"rating\": 3\n                },\n                {\n                    \"rating\": 3\n                },\n                {\n                    \"rating\": 3\n                },\n                {\n                    \"rating\": 3\n                },\n                {\n                    \"rating\": 3\n                },\n                {\n                    \"rating\": 3\n                }\n            ],\n            \"description\": null,\n            \"is_super_tutor\": true\n        },\n        {\n            \"first_name\": \"Jean\",\n            \"last_name\": \"Shields\",\n            \"exam_board_logo\": [\n                \"sdfsdf\",\n                \"dfjhdf\"\n            ],\n            \"bio\": \"Senior\",\n            \"hourly_rate\": 257,\n            \"review\": [],\n            \"description\": null,\n            \"is_super_tutor\": true\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Contact with Teacher",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"teacher_id\": 29,\r\n    \"message\": \"message for teacher\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/student/contact/teacher",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"contact",
+								"teacher"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Contact with Teacher",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"teacher_id\": 29,\r\n    \"student_id\": 5,\r\n    \"message\": \"message for teacher\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/v1/student/contact/teacher",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"student",
+										"contact",
+										"teacher"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "359"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"167-yZnS6fpgmgftGhPhLl9qMRxi3k0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 Sep 2023 07:51:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"success\",\n    \"data\": {\n        \"id\": 10,\n        \"teacher_id\": 29,\n        \"student_id\": 5,\n        \"date\": \"2023-09-25T07:51:41.189Z\",\n        \"message\": \"message for teacher\",\n        \"subject_id\": null,\n        \"level_id\": null,\n        \"Teacher\": {\n            \"email\": \"Esteban.Mayer@hotmail.com\"\n        },\n        \"Student\": {\n            \"email\": \"Orpha_Sauer@gmail.com\"\n        },\n        \"Subject\": null,\n        \"Level\": null,\n        \"is_created\": true,\n        \"send_message\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "social media validation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/v1/auth/social/validation?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1kbWVoZWRpaGFzYW4yMzYwQGdtYWlsLmNvbSIsImlkIjoyMSwicGhvbmUiOm51bGwsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNjk2MjMxNTcxfQ.hWTLQlU2QCgPrUIqh4ti_Auq8l6VgGswzHOhVHCK6g8",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"social",
+								"validation"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1kbWVoZWRpaGFzYW4yMzYwQGdtYWlsLmNvbSIsImlkIjoyMSwicGhvbmUiOm51bGwsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNjk2MjMxNTcxfQ.hWTLQlU2QCgPrUIqh4ti_Auq8l6VgGswzHOhVHCK6g8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Student Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"Sarina_Conroy@hotmail.com\",\r\n    \"password\":\"mehedihasan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/auth/student/login",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"student",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teacher",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"{{$randomFirstName}}\",\r\n    \"last_name\": \"{{$randomLastName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"phone\": \"{{$randomPhoneNumber}}\",\r\n    \"password\": \"mehedihasan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/auth/teacher/register",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"teacher",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"Carlo33@hotmail.com\",\r\n    \"password\":\"mehedihasan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/auth/teacher/login",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"teacher",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Teacher",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/v1/teacher/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teacher",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find By id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/v1/teacher/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teacher",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Find By id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOST}}/api/v1/teacher/47",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"teacher",
+										"47"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "919"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"397-MsOsQUvjxFbuh+6maZXwEWRBnWU\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Sep 2023 13:48:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"first_name\": \"Madonna\",\n    \"last_name\": \"Daniel\",\n    \"profile_photo\": \"https://avatars.githubusercontent.com/u/46306427\",\n    \"email\": \"Wilton.Bauch68@hotmail.com\",\n    \"phone\": \"(316) 811-9790 x888\",\n    \"experience\": 1,\n    \"is_dbs_checked\": false,\n    \"is_super_tutor\": false,\n    \"bio\": \"illum ullam molestiae\",\n    \"description\": null,\n    \"price_one_to_one\": 40,\n    \"price_group\": 30,\n    \"address_line_1\": null,\n    \"address_line_2\": null,\n    \"city\": null,\n    \"postal_code\": null,\n    \"country\": null,\n    \"Review\": [\n        {\n            \"date\": \"2023-09-20T19:12:53.060Z\",\n            \"rating\": 3,\n            \"desc\": null,\n            \"profiel_photo\": \"https://avatars.githubusercontent.com/u/80705146\",\n            \"first_name\": \"Abigayle\",\n            \"last_name\": \"Wilderman\"\n        }\n    ],\n    \"ExamBoardOnTeacher\": [\n        {\n            \"logo\": \"hjkj\",\n            \"id\": 2\n        },\n        {\n            \"logo\": \"hjkj\",\n            \"id\": 2\n        }\n    ],\n    \"Qualification\": [\n        {\n            \"degree\": \"sdfasfa\",\n            \"university_name\": \"usnsafdasf\\r\\n\",\n            \"subject\": \"sfdasdfsa\"\n        },\n        {\n            \"degree\": \"sdfasf\",\n            \"university_name\": \"sdfasdfas\",\n            \"subject\": \"sdfasf\"\n        }\n    ],\n    \"SubjectOffered\": [\n        {\n            \"name\": \"Art History\",\n            \"id\": 8\n        },\n        {\n            \"name\": \"Biology\",\n            \"id\": 3\n        }\n    ]\n}"
+						},
+						{
+							"name": "Find By id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOST}}/api/v1/teacher/1",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"teacher",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "12254"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2fde-T/OgqS+AElI5TXQsQOCm73MifIA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Sep 2023 09:02:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"success\",\n    \"data\": {\n        \"id\": 1,\n        \"first_name\": \"Terry\",\n        \"last_name\": \"Hayes\",\n        \"profile_photo\": \"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/289.jpg\",\n        \"email\": \"Telly.Cartwright69@gmail.com\",\n        \"work_email\": null,\n        \"phone\": \"406-433-0809 x6904\",\n        \"experience\": 44,\n        \"is_dbs_checked\": true,\n        \"is_super_tutor\": false,\n        \"bio\": \"necessitatibus ducimus nihil\",\n        \"description\": null,\n        \"price_one_to_one\": 40,\n        \"price_group\": 30,\n        \"address_line_1\": null,\n        \"address_line_2\": null,\n        \"city\": null,\n        \"postal_code\": null,\n        \"country\": null,\n        \"free_video_call\": true,\n        \"lesson_one_to_one\": false,\n        \"lesson_group\": false,\n        \"Review\": [],\n        \"ExamBoardOnTeacher\": [\n            {\n                \"logo\": \"data:image/png;base64,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\",\n                \"id\": 2,\n                \"name\": \"wjec\"\n            }\n        ],\n        \"Qualification\": [],\n        \"SubjectOffered\": [\n            {\n                \"offerd_id\": 1,\n                \"name\": \"Physics\",\n                \"id\": 2,\n                \"level\": \"GCSE\",\n                \"level_id\": 1,\n                \"subject_id\": 2\n            }\n        ],\n        \"levelCost\": [\n            {\n                \"id\": 1,\n                \"no_of_member\": 1,\n                \"cost_per_student\": 10,\n                \"level_id\": 1,\n                \"tutors_cut\": 20\n            },\n            {\n                \"id\": 2,\n                \"no_of_member\": 2,\n                \"cost_per_student\": 18,\n                \"level_id\": 1,\n                \"tutors_cut\": 30\n            },\n            {\n                \"id\": 7,\n                \"no_of_member\": 3,\n                \"cost_per_student\": 34,\n                \"level_id\": 1,\n                \"tutors_cut\": 434\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Teacher Availiblity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/v1/teacher/weeklyhours/100",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teacher",
+								"weeklyhours",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Availiblity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hours\": [\r\n        {\r\n            \"day\": \"TUE\",\r\n            \"slot\": \"AFTERNOON\"\r\n        },\r\n        {\r\n            \"day\": \"MON\",\r\n            \"slot\": \"AFTERNOON\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/teacher/weeklyhours/5",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teacher",
+								"weeklyhours",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teacher verify by token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/auth/teacher/request/verify?token=ce33170e-d3ce-4419-8398-574b0ce80b80",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"teacher",
+								"request",
+								"verify"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "ce33170e-d3ce-4419-8398-574b0ce80b80"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Teacher verify by token",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOST}}/api/v1/auth/teacher/verify/token",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"teacher",
+										"verify",
+										"token"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-tMcvYekLLQsGzGc4yYpjFvX275Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Sep 2023 14:26:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"verified\",\n    \"data\": {\n        \"is_accepted\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "pagination and filter for teacher",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/v1/teacher?availability=Monday_none%7CMonday_morning|Monday_afternoon|Tuesday_none|Tuesday_morning|Tuesday_afternoon%7CWednesday_none%7CWednesday_morning%7CWednesday_afternoon",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teacher"
+							],
+							"query": [
+								{
+									"key": "tution_type",
+									"value": "one_to_one",
+									"disabled": true
+								},
+								{
+									"key": "free_video_call",
+									"value": "yes",
+									"disabled": true
+								},
+								{
+									"key": "exam_board",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "super_tutor",
+									"value": "yes",
+									"disabled": true
+								},
+								{
+									"key": "student_level",
+									"value": "9",
+									"disabled": true
+								},
+								{
+									"key": "days",
+									"value": "Monday_Saturday",
+									"disabled": true
+								},
+								{
+									"key": "hours",
+									"value": "Saturday:MORNING_Tuesday:MORNING",
+									"disabled": true
+								},
+								{
+									"key": "subject_id",
+									"value": "7",
+									"disabled": true
+								},
+								{
+									"key": "availability",
+									"value": "Monday_none%7CMonday_morning|Monday_afternoon|Tuesday_none|Tuesday_morning|Tuesday_afternoon%7CWednesday_none%7CWednesday_morning%7CWednesday_afternoon"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\":\"mehedi\",\r\n    \"last_name\":\"hasan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/teacher/update/info/47",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teacher",
+								"update",
+								"info",
+								"47"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"new_password\":\"mehedihasan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/teacher/update/password/48",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teacher",
+								"update",
+								"password",
+								"48"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "timeslots",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Find Tutor",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"subject_id\": 2,\r\n    \"level_id\": 2,\r\n    \"name\": \"{{$randomEmail}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"phone\": \"{{$randomPhoneNumber}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/findtutor/create",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"findtutor",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Otp",
+			"item": [
+				{
+					"name": "Verify Req",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"Thomas23@yahoo.com\",\r\n    \"otp\":7151\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/auth/otp/verify",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"otp",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "Submit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"teacher_id\": 7,\r\n    \"student_id\": 2,\r\n    \"rating\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/teacher/review/submit",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teacher",
+								"review",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By teacher Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/v1/teacher/review/7",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teacher",
+								"review",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking Teacher",
+			"item": [
+				{
+					"name": "create for one to one",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"student_id\": 34,\r\n    \"teacher_id\": 5,\r\n    \"amount\": 55,\r\n    \"no_of_member\": 1,\r\n    \"level_id\": 2,\r\n    \"subject_id\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/booking/teacher/one_to_one",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"booking",
+								"teacher",
+								"one_to_one"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"student_id\": 70,\r\n    \"teacher_id\": 98,\r\n    \"amount\":233\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/v1/booking/teacher",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"booking",
+										"teacher"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "679"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a7-90Q6W9gthuCC/Fp80wl1Cbn03Fk\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Sep 2023 11:31:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"success\",\n    \"data\": {\n        \"id\": 3,\n        \"teacher_id\": 98,\n        \"student_id\": 70,\n        \"subject_id\": null,\n        \"level_id\": null,\n        \"booking_type\": null,\n        \"no_of_member\": null,\n        \"date\": null,\n        \"start_time\": null,\n        \"duration\": null,\n        \"suuport_message\": null,\n        \"payment_status\": \"UNPAID\",\n        \"amount\": 233,\n        \"is_booking\": true,\n        \"payment_url\": \"https://checkout.stripe.com/c/pay/cs_test_a1gf3dUR8sqa61hVo8djndHrAestVmSUZ0uJ0vD16ICT6xfu4vak6cuwPI#fidkdWxOYHwnPyd1blpxYHZxWjA0S3d%2FUlBHUnZ1bDNxZ1RpVDZQdWdLPUZyQlFMMkh8Zk9BY0hGdl9tVTdNU0BXXUdxakl9VG93UWNNVDB8bU9Vc0pEbmZBNGZpd0Z2T0toV2NuaGttMmlwNTVuTm1BT2BLaicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create for group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"student_id\": 34,\r\n    \"teacher_id\": 5,\r\n    \"no_of_member\": 10,\r\n    \"amount\": 40,\r\n    \"level_id\": 1,\r\n    \"subject_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/booking/teacher/group",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"booking",
+								"teacher",
+								"group"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"student_id\": 70,\r\n    \"teacher_id\": 98,\r\n    \"amount\":233\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/v1/booking/teacher",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"booking",
+										"teacher"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "679"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a7-90Q6W9gthuCC/Fp80wl1Cbn03Fk\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Sep 2023 11:31:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"success\",\n    \"data\": {\n        \"id\": 3,\n        \"teacher_id\": 98,\n        \"student_id\": 70,\n        \"subject_id\": null,\n        \"level_id\": null,\n        \"booking_type\": null,\n        \"no_of_member\": null,\n        \"date\": null,\n        \"start_time\": null,\n        \"duration\": null,\n        \"suuport_message\": null,\n        \"payment_status\": \"UNPAID\",\n        \"amount\": 233,\n        \"is_booking\": true,\n        \"payment_url\": \"https://checkout.stripe.com/c/pay/cs_test_a1gf3dUR8sqa61hVo8djndHrAestVmSUZ0uJ0vD16ICT6xfu4vak6cuwPI#fidkdWxOYHwnPyd1blpxYHZxWjA0S3d%2FUlBHUnZ1bDNxZ1RpVDZQdWdLPUZyQlFMMkh8Zk9BY0hGdl9tVTdNU0BXXUdxakl9VG93UWNNVDB8bU9Vc0pEbmZBNGZpd0Z2T0toV2NuaGttMmlwNTVuTm1BT2BLaicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Booking Lessons for student",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "model",
+								"value": "teacher",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "id",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/v1/student/dashboard/bookings?student_id=6",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"dashboard",
+								"bookings"
+							],
+							"query": [
+								{
+									"key": "student_id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Booking Lessons for student",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "model",
+										"value": "teacher",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "id",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{HOST}}/api/v1/booking/teacher?model=student&id=32",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"booking",
+										"teacher"
+									],
+									"query": [
+										{
+											"key": "model",
+											"value": "student"
+										},
+										{
+											"key": "id",
+											"value": "32"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1011"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3f3-YtFd+tK5ELsgrTwvOMPqFX0I8WA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 04:55:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"success\",\n    \"data\": {\n        \"upcoming\": [\n            {\n                \"id\": 48,\n                \"teacher_id\": 99,\n                \"student_id\": 32,\n                \"subject_id\": null,\n                \"level_id\": null,\n                \"booking_type\": null,\n                \"no_of_member\": null,\n                \"date\": \"2023-09-24T10:43:58.000Z\",\n                \"start_time\": null,\n                \"duration\": null,\n                \"suuport_message\": null,\n                \"payment_status\": \"UNPAID\",\n                \"amount\": 233,\n                \"Level\": null,\n                \"Subject\": null,\n                \"Teacher\": {\n                    \"id\": 99,\n                    \"first_name\": \"Grayce\",\n                    \"last_name\": \"Dibbert\",\n                    \"profile_photo\": \"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/93.jpg\"\n                }\n            },\n            {\n                \"id\": 49,\n                \"teacher_id\": 99,\n                \"student_id\": 32,\n                \"subject_id\": 61,\n                \"level_id\": 7,\n                \"booking_type\": null,\n                \"no_of_member\": null,\n                \"date\": \"2023-09-24T10:43:59.000Z\",\n                \"start_time\": null,\n                \"duration\": null,\n                \"suuport_message\": null,\n                \"payment_status\": \"UNPAID\",\n                \"amount\": 233,\n                \"Level\": {\n                    \"name\": \"GCSE\"\n                },\n                \"Subject\": {\n                    \"name\": \"Chemistry\"\n                },\n                \"Teacher\": {\n                    \"id\": 99,\n                    \"first_name\": \"Grayce\",\n                    \"last_name\": \"Dibbert\",\n                    \"profile_photo\": \"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/93.jpg\"\n                }\n            }\n        ],\n        \"complete\": []\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Booking Lessons For Teacher",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "model",
+								"value": "teacher",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "id",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/v1/teacher/dashboard/booking-list?id=99",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"teacher",
+								"dashboard",
+								"booking-list"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "99"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Booking Lessons For Teacher",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "model",
+										"value": "teacher",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "id",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{HOST}}/api/v1/teacher/dashboard/booking-list?id=99",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"teacher",
+										"dashboard",
+										"booking-list"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "99"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "929"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a1-Y7FLehuPEzdV82WojEiBr9aY4go\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Sep 2023 04:54:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"statusCode\": 200,\n    \"message\": \"success\",\n    \"data\": {\n        \"upcoming\": [\n            {\n                \"id\": 48,\n                \"teacher_id\": 99,\n                \"student_id\": 32,\n                \"subject_id\": null,\n                \"level_id\": null,\n                \"booking_type\": null,\n                \"no_of_member\": null,\n                \"date\": \"2023-09-24T10:43:58.000Z\",\n                \"start_time\": null,\n                \"duration\": null,\n                \"suuport_message\": null,\n                \"payment_status\": \"UNPAID\",\n                \"amount\": 233,\n                \"Student\": {\n                    \"id\": 32,\n                    \"first_name\": \"Alysha\",\n                    \"last_name\": \"Greenfelder\",\n                    \"profile_photo\": \"https://avatars.githubusercontent.com/u/74839361\"\n                },\n                \"Subject\": null,\n                \"Level\": null\n            },\n            {\n                \"id\": 49,\n                \"teacher_id\": 99,\n                \"student_id\": 32,\n                \"subject_id\": 61,\n                \"level_id\": 7,\n                \"booking_type\": null,\n                \"no_of_member\": null,\n                \"date\": \"2023-09-24T10:43:59.000Z\",\n                \"start_time\": null,\n                \"duration\": null,\n                \"suuport_message\": null,\n                \"payment_status\": \"UNPAID\",\n                \"amount\": 233,\n                \"Student\": {\n                    \"id\": 32,\n                    \"first_name\": \"Alysha\",\n                    \"last_name\": \"Greenfelder\",\n                    \"profile_photo\": \"https://avatars.githubusercontent.com/u/74839361\"\n                },\n                \"Subject\": {\n                    \"name\": \"Chemistry\"\n                },\n                \"Level\": {\n                    \"name\": \"GCSE\"\n                }\n            }\n        ],\n        \"complete\": []\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Join Group",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/v1/booking/teacher/join-group?auth_token=83271faa-de85-4577-8313-16e9bb7b6889&student_id=3",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"booking",
+								"teacher",
+								"join-group"
+							],
+							"query": [
+								{
+									"key": "auth_token",
+									"value": "83271faa-de85-4577-8313-16e9bb7b6889"
+								},
+								{
+									"key": "student_id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Join Group Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/v1/booking/teacher/stripe",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"booking",
+								"teacher",
+								"stripe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get time slots",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/v1/booking/teacher/timeslots?id=4&duration=2",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"booking",
+								"teacher",
+								"timeslots"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								},
+								{
+									"key": "duration",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Blog",
+			"item": [
+				{
+					"name": "all blogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/v1/blog/all",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/v1/blog/5",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "upload image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Md Mehedi Hasan/Pictures/2716505.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/attachments/upload-image",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"attachments",
+						"upload-image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload image Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Md Mehedi Hasan/Pictures/2716505.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/attachments/upload-image",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"attachments",
+						"upload-image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "settings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/settings",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "features",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/features",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"features"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Google.meet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/stripe/google/meet",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"stripe",
+						"google",
+						"meet"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "http://localhost:8000",
+			"type": "default"
+		},
+		{
+			"key": "TOKEN",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "HOST",
+			"value": "http://159.223.205.14/",
+			"type": "default",
+			"disabled": true
+		},
+		{
+			"key": "TOKEN",
+			"value": "",
+			"type": "default",
+			"disabled": true
+		},
+		{
+			"key": "HOST",
+			"value": "http://localhost:5000",
+			"type": "default",
+			"disabled": true
+		},
+		{
+			"key": "TOKEN",
+			"value": "",
+			"type": "default",
+			"disabled": true
+		}
+	]
+}
